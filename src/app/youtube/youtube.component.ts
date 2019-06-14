@@ -11,6 +11,7 @@ export class YoutubeComponent implements OnInit {
 
   searchResults: any;
   videoids: any[] = [];
+  videoData: any;
   dangerousVideoUrl: string;
   // videoUrl: any;
   url: SafeResourceUrl;
@@ -20,30 +21,44 @@ export class YoutubeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiService.loadYouTube().subscribe(response => {
-      this.searchResults = response;
-            for (let i=0; i<5; i++) {
-        this.videoids.push(this.searchResults.items[i].id.videoId);
-      }
-      console.log(this.videoids);
-    });
+    // this.apiService.loadYouTube().subscribe(response => {
+    //   this.searchResults = response;
+    //         for (let i=0; i<5; i++) {
+    //     this.videoids.push(this.searchResults.items[i].id.videoId);
+    //   }
+    //   console.log(this.videoids);
+    // });
   }
 
-  getSearchResults(form) {
-    console.log(form.value.search);
-    
+
+  async getSearchResults(form) {
+    // console.log(form.value.search);
     this.videoids.length = 0;
-    // this.searchResults;
-    this.apiService.getSearchData(form.value.search).subscribe(response => {
-      this.searchResults = response;
-      console.log(this.searchResults);
-      // console.log(this.searchResults.items[1].id.videoId);
-      for (let i=0; i<5; i++) {
-        this.videoids.push(this.searchResults.items[i].id.videoId);
-      }
-      console.log(this.videoids);
-    });
+    this.searchResults = await this.apiService.getSearchData(form.value.search).toPromise();
+    console.log(this.searchResults);
+    for (let i=0; i<5; i++) {
+      this.videoids.push(this.searchResults.items[i].id.videoId);
+    }
+    // console.log(this.videoids);
+    let videoid = this.videoids[0];
+    // console.log(videoid);
+    this.videoData = await this.apiService.getVideoData(videoid).toPromise();
+    console.log(this.videoData);
   }
+
+
+  // getSearchResults(form) {
+  //   console.log(form.value.search);
+  //   this.videoids.length = 0;
+  //   this.apiService.getSearchData(form.value.search).subscribe(response => {
+  //     this.searchResults = response;
+  //     console.log(this.searchResults);
+  //     for (let i=0; i<5; i++) {
+  //       this.videoids.push(this.searchResults.items[i].id.videoId);
+  //     }
+  //     console.log(this.videoids);
+  //   });
+  // }
 
   // updateVideoUrl(id: string) {
   //   this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;

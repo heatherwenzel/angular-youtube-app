@@ -18,9 +18,10 @@
 
 <div>
   <iframe [src]="url"></iframe>
-  <h3>Title</h3>
-  <p>Description</p>
-  <p>Video views</p>
-  <p>Video likes</p>
-  <p>Video dislikes</p>
+  <h3>{{ searchResults.items[0].snippet.title }}</h3>
+  <p>{{ searchResults.items[0].snippet.description }}</p>
+  <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
+  <p>Likes: {{ videoData.items[0].statistics.likeCount }}</p>
+  <p>Dislikes: {{ videoData.items[0].statistics.dislikeCount }}</p>
+  
 </div>
