@@ -1,13 +1,26 @@
 <form #searchForm="ngForm" (ngSubmit)="getSearchResults(searchForm)">
   <label for="">Search YouTube:</label>
-  <input type="text" />
+  <input type="text" ngModel name="search"/>
   <button>Search</button>
 </form>
 
 <div>
-  <p>Navigation/search results will go here</p>
+    <button>Watch video 1</button>
+    <button>Watch video 2</button>
+    <button>Watch video 3</button>
+    <button>Watch video 4</button>
+    <button>Watch video 5</button>
 </div>
+  
+  <div *ngFor="let video of videoids; index as i">
+    <p>{{ video }}</p>
+  </div>
 
 <div>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/EPM5XEXKa_Y" frameborder="0"></iframe>
+  <iframe [src]="url"></iframe>
+  <h3>Title</h3>
+  <p>Description</p>
+  <p>Video views</p>
+  <p>Video likes</p>
+  <p>Video dislikes</p>
 </div>
