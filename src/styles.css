@@ -4,4 +4,7 @@
 body {
   margin: 0;
   padding: 10px;
+  background-image: url("./assets/gradient.png");
+  background-attachment: fixed;
+  background-size: cover;
 }
