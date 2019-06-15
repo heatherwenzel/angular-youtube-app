@@ -13,19 +13,16 @@ export class YoutubeComponent implements OnInit {
   showThree: boolean = false;
   showFour: boolean = false;
   showFive: boolean = false;
-  searchResults: any; //contains all of the search responses
-  searchArray: any[] = []; //contains an array of all of the search responses
+  searchResults: any; //contains all of the search result responses
+  searchArray: any[] = []; //contains an array of all the search results
   videoids: any[] = []; //contains an array of all of the search responses' ids
-  videoid: string;
+  videoid: string; //holds the current videoid
   videoData: any; //contains the data response
-  dangerousVideoUrl: string;
-  videoUrl: any;
 
   constructor(private apiService: SearchApiService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
-    // this.updateVideoUrl(this.videoid);
     this.apiService.loadYouTube().subscribe(response => {
       this.searchResults = response;
             for (let i=0; i<5; i++) {
@@ -36,27 +33,19 @@ export class YoutubeComponent implements OnInit {
         this.videoData = response;
       });
       this.showOne = !this.showOne;
-      // console.log(this.videoids);
     });
   }
 
   async getSearchResults(form) {
-    // console.log(form.value.search);
     this.videoids.length = 0;
     this.searchResults = await this.apiService.getSearchData(form.value.search).toPromise();
-    // console.log(this.searchResults);
     this.searchArray = this.searchResults.items;
     console.log(this.searchArray);
     for (let i=0; i<5; i++) {
       this.videoids.push(this.searchResults.items[i].id.videoId);
     }
+    this.showOne = true;
   }
-
-  // updateVideoUrl(id: string) {
-  //   this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
-  //   this.videoUrl =
-  //       this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
-  // }
 
   videoOne($event) {
     this.showOne = !this.showOne;
@@ -68,6 +57,10 @@ export class YoutubeComponent implements OnInit {
     this.apiService.getVideoData(this.videoid).subscribe(response => {
       this.videoData = response;
     });
+  }
+
+  getVideoOne() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoids[0]);
   }
 
   videoTwo($event) {
@@ -82,6 +75,10 @@ export class YoutubeComponent implements OnInit {
     });
   }
 
+  getVideoTwo() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoids[1]);
+  }
+
   videoThree($event) {
     this.showThree = !this.showThree;
     this.showOne = false;
@@ -92,6 +89,10 @@ export class YoutubeComponent implements OnInit {
     this.apiService.getVideoData(this.videoid).subscribe(response => {
       this.videoData = response;
     });
+  }
+
+  getVideoThree() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoids[2]);
   }
 
   videoFour($event) {
@@ -106,6 +107,10 @@ export class YoutubeComponent implements OnInit {
     });
   }
 
+  getVideoFour() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoids[3]);
+  }
+
   videoFive($event) {
     this.showFive = !this.showFive;
     this.showOne = false;
@@ -116,6 +121,10 @@ export class YoutubeComponent implements OnInit {
     this.apiService.getVideoData(this.videoid).subscribe(response => {
       this.videoData = response;
     });
+  }
+
+  getVideoFive() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoids[4]);
   }
 
 }

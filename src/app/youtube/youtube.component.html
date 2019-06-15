@@ -12,12 +12,8 @@
   <button (click)="videoFive(event)">Watch video 5</button>
 </div>
 
-<!-- <div *ngFor="let video of videoids; index as i">
-  <p>{{ video }}</p>
-</div> -->
-
 <div *ngIf="showOne">
-  <!-- <iframe [src]=""></iframe> -->
+  <iframe [src]="getVideoOne()" frameborder="0"></iframe>
   <h3>Title: {{ searchResults.items[0].snippet.title }}</h3>
   <p>Description: {{ searchResults.items[0].snippet.description }}</p>
   <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
@@ -26,7 +22,7 @@
 </div>
 
 <div *ngIf="showTwo">
-  <!-- <iframe [src]=""></iframe> -->
+  <iframe [src]="getVideoTwo()" frameborder="0"></iframe>
   <h3>Title: {{ searchResults.items[1].snippet.title }}</h3>
   <p>Description: {{ searchResults.items[1].snippet.description }}</p>
   <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
@@ -35,7 +31,7 @@
 </div>
 
 <div *ngIf="showThree">
-  <!-- <iframe [src]=""></iframe> -->
+  <iframe [src]="getVideoThree()" frameborder="0"></iframe>
   <h3>Title: {{ searchResults.items[2].snippet.title }}</h3>
   <p>Description: {{ searchResults.items[2].snippet.description }}</p>
   <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
@@ -44,7 +40,7 @@
 </div>
 
 <div *ngIf="showFour">
-  <!-- <iframe [src]=""></iframe> -->
+  <iframe [src]="getVideoFour()" frameborder="0"></iframe>
   <h3>Title: {{ searchResults.items[3].snippet.title }}</h3>
   <p>Description: {{ searchResults.items[3].snippet.description }}</p>
   <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
@@ -53,7 +49,7 @@
 </div>
 
 <div *ngIf="showFive">
-  <!-- <iframe [src]=""></iframe> -->
+  <iframe [src]="getVideoFive()" frameborder="0"></iframe>
   <h3>Title: {{ searchResults.items[4].snippet.title }}</h3>
   <p>Description: {{ searchResults.items[4].snippet.description }}</p>
   <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
