@@ -11,7 +11,7 @@ export class SearchApiService {
   constructor(private http: HttpClient) { }
 
   loadYouTube() {
-    return this.http.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=tarzan&type=video&key=${this.apikey}`);
+    return this.http.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=amazon%20studios%20trailer&type=video&key=${this.apikey}`);
   }
 
   getSearchData(usersearch: string) {

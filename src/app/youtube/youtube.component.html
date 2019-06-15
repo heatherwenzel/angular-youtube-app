@@ -5,55 +5,57 @@
   <button mat-raised-button color="primary" (click)="videoOne(event)">Search</button>
 </form>
 
+<div class="main-content">
 <div class="buttons">
-  <button mat-raised-button color="primary" (click)="videoOne(event)">Watch video 1</button>
-  <button mat-raised-button color="primary" (click)="videoTwo(event)">Watch video 2</button>
-  <button mat-raised-button color="primary" (click)="videoThree(event)">Watch video 3</button>
-  <button mat-raised-button color="primary" (click)="videoFour(event)">Watch video 4</button>
-  <button mat-raised-button color="primary" (click)="videoFive(event)">Watch video 5</button>
+  <button mat-raised-button color="primary" class="video-button" (click)="videoOne(event)">Watch video 1</button>
+  <button mat-raised-button color="primary" class="video-button" (click)="videoTwo(event)">Watch video 2</button>
+  <button mat-raised-button color="primary" class="video-button" (click)="videoThree(event)">Watch video 3</button>
+  <button mat-raised-button color="primary" class="video-button"(click)="videoFour(event)">Watch video 4</button>
+  <button mat-raised-button color="primary" class="video-button" (click)="videoFive(event)">Watch video 5</button>
 </div>
 
 <mat-card *ngIf="showOne">
   <iframe [src]="getVideoOne()" frameborder="0"></iframe>
   <mat-card-title>{{ searchResults.items[0].snippet.title }}</mat-card-title>
   <mat-card-subtitle>{{ searchResults.items[0].snippet.description }}</mat-card-subtitle>
-  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount | number : fractionSize }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount | number : fractionSize }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount | number : fractionSize }} dislikes</mat-card-content>
 </mat-card>
 
 <mat-card *ngIf="showTwo">
   <iframe [src]="getVideoTwo()" frameborder="0"></iframe>
   <mat-card-title>{{ searchResults.items[1].snippet.title }}</mat-card-title>
   <mat-card-subtitle>{{ searchResults.items[1].snippet.description }}</mat-card-subtitle>
-  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount | number : fractionSize }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount | number : fractionSize }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount | number : fractionSize }} dislikes</mat-card-content>
 </mat-card>
 
 <mat-card *ngIf="showThree">
   <iframe [src]="getVideoThree()" frameborder="0"></iframe>
   <mat-card-title>{{ searchResults.items[2].snippet.title }}</mat-card-title>
   <mat-card-subtitle>{{ searchResults.items[2].snippet.description }}</mat-card-subtitle>
-  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount | number : fractionSize }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount | number : fractionSize }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount | number : fractionSize }} dislikes</mat-card-content>
 </mat-card>
 
 <mat-card *ngIf="showFour">
   <iframe [src]="getVideoFour()" frameborder="0"></iframe>
   <mat-card-title>{{ searchResults.items[3].snippet.title }}</mat-card-title>
   <mat-card-subtitle>{{ searchResults.items[3].snippet.description }}</mat-card-subtitle>
-  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount | number : fractionSize }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount | number : fractionSize }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount | number : fractionSize }} dislikes</mat-card-content>
 </mat-card>
 
 <mat-card *ngIf="showFive">
   <iframe [src]="getVideoFive()" frameborder="0"></iframe>
   <mat-card-title>{{ searchResults.items[4].snippet.title }}</mat-card-title>
   <mat-card-subtitle>{{ searchResults.items[4].snippet.description }}</mat-card-subtitle>
-  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
-  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount | number : fractionSize }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount | number : fractionSize }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount | number : fractionSize }} dislikes</mat-card-content>
 </mat-card>
+</div>
