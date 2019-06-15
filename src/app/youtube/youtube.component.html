@@ -1,58 +1,59 @@
 <form #searchForm="ngForm" (ngSubmit)="getSearchResults(searchForm)">
-  <label for="">Search YouTube:</label>
-  <input type="text" ngModel name="search" />
-  <button (click)="videoOne(event)">Search</button>
+  <mat-form-field>
+    <input matInput ngModel name="search" placeholder="Search YouTube">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="videoOne(event)">Search</button>
 </form>
 
-<div>
-  <button (click)="videoOne(event)">Watch video 1</button>
-  <button (click)="videoTwo(event)">Watch video 2</button>
-  <button (click)="videoThree(event)">Watch video 3</button>
-  <button (click)="videoFour(event)">Watch video 4</button>
-  <button (click)="videoFive(event)">Watch video 5</button>
+<div class="buttons">
+  <button mat-raised-button color="primary" (click)="videoOne(event)">Watch video 1</button>
+  <button mat-raised-button color="primary" (click)="videoTwo(event)">Watch video 2</button>
+  <button mat-raised-button color="primary" (click)="videoThree(event)">Watch video 3</button>
+  <button mat-raised-button color="primary" (click)="videoFour(event)">Watch video 4</button>
+  <button mat-raised-button color="primary" (click)="videoFive(event)">Watch video 5</button>
 </div>
 
-<div *ngIf="showOne">
+<mat-card *ngIf="showOne">
   <iframe [src]="getVideoOne()" frameborder="0"></iframe>
-  <h3>Title: {{ searchResults.items[0].snippet.title }}</h3>
-  <p>Description: {{ searchResults.items[0].snippet.description }}</p>
-  <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
-  <p>Likes: {{ videoData.items[0].statistics.likeCount }}</p>
-  <p>Dislikes: {{ videoData.items[0].statistics.dislikeCount }}</p>
-</div>
+  <mat-card-title>{{ searchResults.items[0].snippet.title }}</mat-card-title>
+  <mat-card-subtitle>{{ searchResults.items[0].snippet.description }}</mat-card-subtitle>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+</mat-card>
 
-<div *ngIf="showTwo">
+<mat-card *ngIf="showTwo">
   <iframe [src]="getVideoTwo()" frameborder="0"></iframe>
-  <h3>Title: {{ searchResults.items[1].snippet.title }}</h3>
-  <p>Description: {{ searchResults.items[1].snippet.description }}</p>
-  <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
-  <p>Likes: {{ videoData.items[0].statistics.likeCount }}</p>
-  <p>Dislikes: {{ videoData.items[0].statistics.dislikeCount }}</p>
-</div>
+  <mat-card-title>{{ searchResults.items[1].snippet.title }}</mat-card-title>
+  <mat-card-subtitle>{{ searchResults.items[1].snippet.description }}</mat-card-subtitle>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+</mat-card>
 
-<div *ngIf="showThree">
+<mat-card *ngIf="showThree">
   <iframe [src]="getVideoThree()" frameborder="0"></iframe>
-  <h3>Title: {{ searchResults.items[2].snippet.title }}</h3>
-  <p>Description: {{ searchResults.items[2].snippet.description }}</p>
-  <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
-  <p>Likes: {{ videoData.items[0].statistics.likeCount }}</p>
-  <p>Dislikes: {{ videoData.items[0].statistics.dislikeCount }}</p>
-</div>
+  <mat-card-title>{{ searchResults.items[2].snippet.title }}</mat-card-title>
+  <mat-card-subtitle>{{ searchResults.items[2].snippet.description }}</mat-card-subtitle>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+</mat-card>
 
-<div *ngIf="showFour">
+<mat-card *ngIf="showFour">
   <iframe [src]="getVideoFour()" frameborder="0"></iframe>
-  <h3>Title: {{ searchResults.items[3].snippet.title }}</h3>
-  <p>Description: {{ searchResults.items[3].snippet.description }}</p>
-  <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
-  <p>Likes: {{ videoData.items[0].statistics.likeCount }}</p>
-  <p>Dislikes: {{ videoData.items[0].statistics.dislikeCount }}</p>
-</div>
+  <mat-card-title>{{ searchResults.items[3].snippet.title }}</mat-card-title>
+  <mat-card-subtitle>{{ searchResults.items[3].snippet.description }}</mat-card-subtitle>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+</mat-card>
 
-<div *ngIf="showFive">
+<mat-card *ngIf="showFive">
   <iframe [src]="getVideoFive()" frameborder="0"></iframe>
-  <h3>Title: {{ searchResults.items[4].snippet.title }}</h3>
-  <p>Description: {{ searchResults.items[4].snippet.description }}</p>
-  <p>Views: {{ videoData.items[0].statistics.viewCount }}</p>
-  <p>Likes: {{ videoData.items[0].statistics.likeCount }}</p>
-  <p>Dislikes: {{ videoData.items[0].statistics.dislikeCount }}</p>
-</div>
+  <mat-card-title>{{ searchResults.items[4].snippet.title }}</mat-card-title>
+  <mat-card-subtitle>{{ searchResults.items[4].snippet.description }}</mat-card-subtitle>
+  <mat-card-content><i class="material-icons">remove_red_eye</i>{{ videoData.items[0].statistics.viewCount }} views</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_up</i> {{ videoData.items[0].statistics.likeCount }} likes</mat-card-content>
+  <mat-card-content><i class="material-icons">thumb_down</i>{{ videoData.items[0].statistics.dislikeCount }} dislikes</mat-card-content>
+</mat-card>
