@@ -15,7 +15,7 @@ export class YoutubeComponent implements OnInit {
   showFive: boolean = false;
   searchResults: any; //contains all of the search api call responses
   searchArray: any[] = []; //contains an array of all the search results
-  videoids: any[] = []; //contains an array of all of the search responses' ids
+  videoids: any[] = []; //contains an array of all of the search results' ids
   videoid: string; //holds the current videoid
   videoData: any; //contains all of the data api call responses
 
@@ -23,25 +23,25 @@ export class YoutubeComponent implements OnInit {
   }
 
   ngOnInit() {
-    //loads the initial search api call on window load
+    //makes the initial search api call on window load
     this.apiService.loadYouTube().subscribe(response => {
       this.searchResults = response;
       //pushes all of the videoids from the search api call into the videoids array
       for (let i=0; i<5; i++) {
         this.videoids.push(this.searchResults.items[i].id.videoId);
       }
-      //sets the initial videoid to the first video in the search results
+      //sets the initial videoid to the first video from the search results
       this.videoid = this.videoids[0];
       //makes the initial data api call
       this.apiService.getVideoData(this.videoid).subscribe(response => {
         this.videoData = response;
       });
-      //shows the first video with information on load
+      //shows the first video and its information on load
       this.showOne = !this.showOne;
     });
   }
 
-  //calls the search api and data api when the search button is clicked, taking in the user input as its parameter
+  //calls the search api and data api when the search button is clicked, with the search form as its parameter
   async getSearchResults(form) {
     //resets the array of videoids
     this.videoids.length = 0;

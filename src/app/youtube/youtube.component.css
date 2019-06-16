@@ -35,6 +35,10 @@ mat-card {
   width: 80%;
 }
 
+iframe {
+  width: 260px;
+}
+
 mat-card-title {
   padding: 20px 0 10px 0;
 }
@@ -58,7 +62,12 @@ mat-card-content {
   }
 
   mat-card {
-    width: 60%;
+    width: 70%;
+  }
+  
+  iframe {
+    height: 180px;
+    width: 340px;
   }
 
   mat-form-field {
